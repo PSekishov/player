@@ -68,3 +68,17 @@
   height: 180px;
 
 }
+
+/* MEDIA */
+@media(max-width: 560px){
+  .tarck{
+    padding: 3px;
+    border-width: 1px;
+    border-radius: 14px;
+  }
+
+  .track__info{
+    padding: 8px;
+  }
+
+}

@@ -1,6 +1,7 @@
 html{
   box-sizing: border-box;
 }
+
 *, 
 *::after,
 *::before{
@@ -56,4 +57,3 @@ p {
   position: fixed;
   transform: scale(0);
 }
-

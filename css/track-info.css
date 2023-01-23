@@ -12,3 +12,19 @@
   font-weight: 300;
   font-size: 14px;
 }
+
+/* MEDIA */
+@media(max-width: 560px){
+  .track-info_mobile-center{
+    text-align: center;
+  }
+
+ .track-info__title{
+  font-size: 14px;
+  margin-bottom: 4px;
+ }
+
+ .track-info__artist{
+  font-size: 12px;
+ }
+}
