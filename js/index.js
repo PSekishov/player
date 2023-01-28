@@ -1,4 +1,5 @@
 let playList = [];
+let searchList = [];
 
 const favoriteList = localStorage.getItem('favorite')
     ? JSON.parse(localStorage.getItem('favorite'))
@@ -10,6 +11,8 @@ const favoriteBtn = document.querySelector('.header__favorite--btn');
 const tracksCard = document.getElementsByClassName('track');
 const catalogContainer = document.querySelector('.catalog__container');
 const player = document.querySelector('.player')
+const trackTitle = document.querySelector('.track-info__title');
+const trackArtist = document.querySelector('.track-info__artist');
 const pauseBtn = document.querySelector('.player__controller_pause');
 const stopBtn = document.querySelector('.player__controller_stop');
 const prevBtn = document.querySelector('.player__controller_prev');
@@ -20,6 +23,8 @@ const playerProgressInput = document.querySelector('.player__progress-input');
 const playerTimePassed = document.querySelector('.player__time-passed');
 const playerTimeTotal = document.querySelector('.player__time-total');
 const playerVolumeInput = document.querySelector('.player__volume-input');
+
+const search = document.querySelector('.search');
 
 
 
@@ -71,11 +76,14 @@ const playMusic = (e) => {
     return id === item.id
   });
   audio.src = track.mp3;
+  trackTitle.textContent = track.track
+  trackArtist.textContent = track.artist
 
   audio.play();
 
   pauseBtn.classList.remove('player__icon_play');
   player.classList.add('player_active');
+  player.dataset.idTrack;
 
   const prevTrack = i === 0 ? playList.length - 1 : i - 1;
   const nextTrack = i + 1 === playList.length ? 0 : i + 1;
@@ -121,6 +129,13 @@ const createCard = (data) => {
   const card = document.createElement('a');
   card.href = '#';
   card.classList.add('catalog__item', 'track');
+  
+  if(player.dataset.idTrack === data.id){
+    card.classList.add('track_active');
+    if(audio.paused){
+      card.classList.add('track_pause');
+    }
+  }
   card.dataset.idTrack = data.id;
 
   card.innerHTML = `
@@ -240,6 +255,18 @@ const init = () => {
       muteBtn.classList.remove('player__icon_mute-off');
       playerVolumeInput.value = audio.volume * 100;
     }
+  });
+
+
+  search.addEventListener('input', (e) => {
+    const value = e.target.value;
+    console.log(value);
+    // if(value && value.trim().length > 0){
+    //   value = value.trim().toLocaleLowerCase()
+    // } else {
+
+    // }
+   
   });
 
 };
